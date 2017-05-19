@@ -15,6 +15,8 @@
 
 [Node学习记录：网络编程](https://segmentfault.com/a/1190000009469920)
 
+[Nodejs学习记录: 制作命令行工具](https://segmentfault.com/a/1190000009482931)
+
 ## License
 
 MIT
