@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "a commander example",
   "main": "commander.js",
-  "bin": {"commander": "./bin/commander.js"},
+  "bin": {"commander": "./bin/commander.js"}, //commander 为//cmd为自定义的command命令
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
