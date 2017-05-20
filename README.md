@@ -1,5 +1,7 @@
 # nodejs学习记录
 
+
+[Node学习记录：事件](https://segmentfault.com/a/1190000009490349)
 [Node.js学习记录: 理解Buffer](https://segmentfault.com/a/1190000009248664)
 
 [Node.js学习记录： stream](https://segmentfault.com/a/1190000009254441)
