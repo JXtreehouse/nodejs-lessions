@@ -1,0 +1,26 @@
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>Todo List</title>
+  	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+  	<link rel="stylesheet" type="text/css" href="/assets/styles.css">
+
+  </head>
+
+  <body>
+    <h1>My Todo List</h1>
+  	<div id="todo-table">
+  		<form id="form">
+  			<input type="text" name="item" placeholder="Add new item..." required/>
+  			<button type="submit">Add Item</button>
+  		</form>
+  		<ul>
+        <% for(var i=0; i < todos.length; i++){ %>
+          <li><%=todos[i].item %></li>
+
+        	<% } %>
+  		</ul>
+  	</div>
+  	<script type="text/javascript" src="/assets/todo-list.js"></script>
+  </body>
+<html>
