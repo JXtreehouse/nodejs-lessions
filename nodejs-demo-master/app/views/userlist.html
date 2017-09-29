@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<% include includes/head.html %>
+	</head>
+	<body>
+		<% include includes/header.html %>
+		<div class="container text-center">
+			<table class="table table-striped">
+	  			<caption>用户列表</caption>
+				<thead>
+				    <tr>
+					    <td>用户名</td>
+					    <td>时间</td>
+					    <td>查看</td>
+					    <td>删除</td>
+				    </tr>
+				</thead>
+				<tbody>
+					<% for(var i=0; i<user.length; i++){ %>
+				    <tr>
+				      <td><%= user[i].username %></td>
+				      <td><%= moment(user[i].meta.updateAt).format('MM/DD/YYYY')%></td>
+				      <td><a href="#">查看</a></td>
+				      <td><a href="/user/delete" class="btn btn-danger">删除</a></td>
+				    </tr>
+				    <% } %>
+				</tbody>
+			</table>
+		</div>
+		<% include includes/footer.html %><!--jquery和bootstrap js-->
+		<script type="text/javascript">
+		</script>
+	</body>
+</html>

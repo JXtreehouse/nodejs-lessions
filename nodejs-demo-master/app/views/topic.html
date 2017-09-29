@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<% include includes/head.html %>
+		<link rel="stylesheet" type="text/css" href="/css/simditor.css"/>
+	</head>
+	<body>
+		<% include includes/header.html %>
+		<div class="container main">
+			<div class="row">
+				<div class="col-lg-10 col-md-10 left-page">
+					<h3><%= topic.title %></h3>
+					<div>作者：<%= topic.username %>|发表于<%= moment(topic.meta.createAt).format('YYYY-MM-DD')%>|<a href="/topic/edit/<%= topic._id %>">修改</a>|<a href="/topic/delete/<%= topic._id %>">删除</a></div>
+					<div class="topic-con">
+						<%= topic.content %>
+					</div>
+					<% if(comments.length){%>
+					<div class="panel panel-default topicCon">
+						
+						<div class="panel-heading">
+							评论
+						</div>
+						<div class="panel-body">
+							<% for(var i=0; i<comments.length; i++){ %>
+								<div class="item">
+									<div class="item-user">
+										<%= comments[i].from.username %>
+										<span class="pull-right replyShow" data-toid="<%= comments[i].from._id%>">回复</span>
+									</div>
+									<div class="item-con toHtml"><%= comments[i].content %></div>
+									<div class="item-con-reply" style="margin-left:20px ;margin-right:20px ;">
+										<% for(var j=0; j<comments[i].reply.length; j++){%>
+										<div class="item-con-reply">
+											<div class="item-con-replys-head">
+												<%= comments[i].reply[j].from.username %>&emsp;回复&emsp;<%= comments[i].reply[j].to.username %>
+												<span class="glyphicon glyphicon-pencil pull-right replyShow" data-toid="<%= comments[i].reply[j].from._id %>"></span>
+											</div>
+											<div class="item-con-replys-con">
+												<%= comments[i].reply[j].content %>
+											</div>
+										</div>
+										<% } %>
+									</div>
+									<form action="/comment/update" method="post" class="replyForm">
+										<input type="hidden" name="reply[_id]" value="<%= comments[i]._id%>"/>
+										<input type="hidden" name="reply[to]" class="replyToId" value=""/>
+										<% if(user){%>
+										<input type="hidden" name="reply[from]" id="" value="<%- user._id %>" />
+										<% }%>
+										<textarea name="reply[content]" rows="3" cols="" style="width: 100%; margin-top: 20px;"></textarea>
+										<input type="submit" name="" id="replyBtn" value="回复" class="pull-right"/>
+									</form>
+								</div>
+								<hr />
+							<% } %>
+						</div>
+					</div><!--评论区-->
+					<% } %>
+					<div class="panel panel-default topicCon">
+						<form action="/comment" method="post">
+							<% if(user){%>
+							<input type="hidden" name="comment[from]" id="" value="<%- user._id %>" />
+							<% }%>
+							<input type="hidden" name="comment[topic]" id="" value="<%= topic._id %>" />
+							<div class="panel-heading">
+								添加回复
+							</div>
+							<div class="panel-body">
+								<textarea id='' name="comment[content]" rows="10" style="width: 100%;margin-bottom: 20px;"></textarea>
+								<input type="submit" class="pull-right" value="回复"/>
+							</div>
+						</form>
+					</div><!--评论表单-->
+				</div><!--left-->
+				<% include includes/right.html %>
+			</div>
+		</div>
+		<% include includes/footer.html %><!--jquery和bootstrap js-->
+		<script type="text/javascript" src="/js/lib/simditor/module.js"></script>
+		<script src="/js/lib/simditor/hotkeys.js" type="text/javascript"></script>
+		<script type="text/javascript" src="/js/lib/simditor/simditor.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			
+			toHtml($('.topic-con'));
+			
+		     $('.replyShow').click(function(){
+		     	var $toId = $(this).data('toid');
+		     	$(this).parents('.item').find('.replyToId').val($toId);
+		     	$(this).parents('.item').find('.replyForm').toggle();
+		     })
+		     
+		    function toHtml($element){
+				var text = $element.text();
+				$element.html(text) 
+			}
+		     
+		     
+		});
+		</script>
+	</body>
+</html>

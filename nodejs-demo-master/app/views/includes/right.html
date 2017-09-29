@@ -1,0 +1,11 @@
+<div id="" class="col-lg-2 col-md-2 right-page text-center">
+	<% if(user){%>
+		欢迎您<a href=""><%- user.username%></a>
+		<div id="">
+			<a href="/topic/edit">发布新话题</a> <br />
+			<a href="/signout">注销</a>
+		</div>
+	<% }else{%>
+		<a data-toggle="modal" data-target="#myModal">登录</a>	
+	<% }%>
+</div>

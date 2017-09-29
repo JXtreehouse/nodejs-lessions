@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<% include includes/head.html %>
+	</head>
+	<body>
+		<% include includes/header.html %>
+		<input type="hidden" id="masterid" value="0"/><!--pageId-->
+		<div class="container home-page">
+			<div id="" class="row">
+				<div id="" class="col-lg-10 col-md-10 left-page">
+					<ul class="nav nav-pills">
+						<li class="active"><a href="#">全部</a></li>
+						<li><a href="#">精华</a></li>
+						<li><a href="#">消息 <span class="badge"><%= 23 %></span></a></li>
+					</ul>
+					<div class="list-group">
+						<% for(var i=0; i<topic.length; i++){ %>
+							<div class="cell list-group-item">
+								<span><i class="badge"><%=  %></i></span>
+								<a href="topic/<%= topic[i]._id %>" title="<%= topic[i].title %>">
+									<%= topic[i].title %></a>
+								<span class="pull-right"><%= moment(topic[i].meta.updateAt).format('MM/DD/YYYY')%></span>
+							</div>
+						<% } %>
+					</div><!--论坛内容结束-->
+					
+					<ul class="pagination">
+						<li><a href="/?page=<%= curentPage%>">&laquo;</a></li>
+						<%if(totalPage<5){ %>
+							<% for(var j = 0; j < totalPage; j++){%>
+						    	<% if(curentPage === j){ %>
+						    		<li class="active"><a href="/?page=<%= j+1%>"><%= j+1%></a></li>
+						    	<%}else{%>
+						    		<li><a href="/?page=<%= j+1%>"><%= j+1%></a></li>
+						    	<%}%>
+						    <%}%>	
+						<%}else{%>
+							<% if(curentPage < 3){ %>
+								<% for(var j = 0; j < 5; j++){%>
+									<% if(curentPage === j){ %>
+										<li class="active"><a href="/?page=<%= j+1%>"><%= j+1%></a></li>
+									<%}else{%>
+										<li><a href="/?page=<%= j+1%>"><%= j+1%></a></li>
+									<%}%>
+						    	<%}%>
+								<li><a>...</a></li>
+							<%}else if(2 < curentPage && curentPage < totalPage-3){%>
+								<li><a>...</a></li>
+								<li><a href="/?page=<%= curentPage-1%>"><%= curentPage-1%></a></li>
+								<li><a href="/?page=<%= curentPage%>"><%= curentPage%></a></li>
+								<li class="active"><a href="/?page=<%= curentPage+1%>"><%= curentPage+1%></a></li>
+								<li><a href="/?page=<%= curentPage+2%>"><%= curentPage+2%></a></li>
+								<li><a href="/?page=<%= curentPage+3%>"><%= curentPage+3%></a></li>
+								<li><a>...</a></li>
+							<%}else if(totalPage-4 < curentPage){%>
+								<li><a>...</a></li>
+								<% for(var j = 0; j < 5; j++){%>
+									<% if((5 - totalPage + curentPage) === j){ %>
+										<li class="active"><a href="/?page=<%= totalPage+j-4%>"><%= totalPage+j-4%></a></li>
+									<%}else{%>
+										<li><a href="/?page=<%= totalPage+j-4%>"><%= totalPage+j-4%></a></li>
+									<%}%>
+						    	<%}%>
+						   	<%}%>
+						<%}%>
+					    <li><a href="/?page=<%= curentPage + 2%>">&raquo;</a></li>
+					    
+					</ul><!--分页-->	
+				</div>
+				<% include includes/right.html %>
+   			</div>
+		</div>
+		
+		<% include includes/footer.html %><!--jquery和bootstrap js-->
+		
+		<script type="text/javascript">
+//			$.post('/',function(data,status){
+//				console.log("POST数据：" + data + "/状态：" + status);
+//			});
+//			$.get('success',function(data,status){
+//				console.log('GET数据:'+data);
+//			});
+			
+		</script>
+	</body>
+</html>

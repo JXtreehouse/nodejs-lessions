@@ -1,0 +1,29 @@
+body{}
+.main{
+	margin-bottom: 40px;
+}
+.topicCon{margin-top:40px ;}
+/*导航*/
+.navbar-form{
+	margin-bottom: 0;
+}
+.topic-con p{
+	text-indent: 2em;
+}
+/*首页*/
+.nav-pills{
+	margin-bottom: 10px;
+}
+.replyForm{
+	overflow: hidden;display: none;
+}
+.item-con-replys-con{
+	text-indent: 2em;
+}
+
+@media only screen and (min-width:768px ) {
+	.navbar-collapse{float: right ;}
+}
+@media only screen and (max-width: 319px) {
+	html{display: none;}
+}
