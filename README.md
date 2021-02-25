@@ -37,14 +37,15 @@
 
 2. 直接看Koa文档和示例，要搞清楚request,response的概念以及相关字段
 
- koa官网： https://koajs.com/
+ - koa官网： https://koajs.com/
 
-koa examples:https://github.com/koajs/examples
+- koa examples:https://github.com/koajs/examples
 
 3.能写中间件，知道中间件的含义
 
-   学习Koa - 让我们写一个中间件:https://juejin.im/post/5ac9edf1f265da2375072bbb 
-常用middleware list:https://github.com/koajs/koa/wiki 建议搞清楚几个常见middleware的意义，以及它的源码，以理解更深。eg:https://github.com/nswbmw/koa-ip
+   - 学习Koa - 让我们写一个中间件:https://juejin.im/post/5ac9edf1f265da2375072bbb 
+- 常用middleware list:https://github.com/koajs/koa/wiki 
+- 建议搞清楚几个常见middleware的意义，以及它的源码，以理解更深。eg:https://github.com/nswbmw/koa-ip
 
 
 
